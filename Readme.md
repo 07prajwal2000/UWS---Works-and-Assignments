@@ -4,5 +4,5 @@
 - anything related to university work.
 
 # TODO Class work
-- [] Info System Analysis (Complete practice assessment).
-- [] Enterprise Architecture (Complete class exercise).
+- [ ] Info System Analysis (Complete practice assessment).
+- [x] Enterprise Architecture (Complete class exercise).
