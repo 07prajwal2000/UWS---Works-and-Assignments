@@ -1,0 +1,38 @@
+1. Customer Data Accuracy and Updates
+Concern: Customer data, including name, address, phone number, and email, needs to be accurate and regularly updated. Inaccurate data could result in failed communication, incorrect notifications, or inability to contact customers for overdue DVDs or reservations.
+Stakeholders Affected: Customers, Store Managers, Store Clerks
+
+4. Payment and Bank Card Information Security
+Concern: Payment data, including bank card information linked to customer accounts, should be securely handled and stored. Failure to secure payment data could lead to financial fraud or identity theft.
+Stakeholders Affected: Customers, Payment Processing Partners, IT Security Team
+
+5. Backup and Disaster Recovery
+Concern: Lack of a reliable backup and recovery system could lead to data loss in case of accidental deletion, system failures, or other disasters, potentially impacting the store’s operations and customer satisfaction.
+Stakeholders Affected: Store Managers, IT Security Team, Customers
+
+5. Perceived Surveillance:
+
+Dataveillance can lead to a consumer’s perception of surveillance, defined as the sense that one is being watched or recorded. Personalized ads can heighten these feelings, making consumers feel observed.
+This perceived surveillance can make consumers uncomfortable and increase their awareness of data privacy.
+
+6. Chilling Effects:
+
+As a response to surveillance, chilling effects occur when individuals alter their behaviors to avoid being tracked. This reaction, driven by a sense of fear or uncertainty, can lead people to refrain from certain actions to maintain privacy.
+Chilling effects threaten moral autonomy by limiting freedom of choice, as individuals feel compelled to change their behaviors to protect their privacy.
+
+7. Access Control and Role-Based Data Access:
+
+Store clerks, managers, and other staff should have role-based access, meaning they can only view or modify data necessary for their specific tasks. For example, clerks should not access customer payment information, and only authorized managers should manage supplier data.
+Stakeholders affected: Store Clerks, Store Managers, IT Security Team
+
+
+8. Regular Updates and Audits of Customer Contact Information:
+
+To ensure notifications (e.g., overdue reminders) are directed accurately, customer contact details must be updated regularly. This reduces the risk of privacy breaches and ensures reliable communication.
+Stakeholders affected: Customers, Store Clerks, Store Managers
+
+
+9. Secure Handling of Payment Information:
+
+The system links bank cards with customer accounts, which means any unauthorized access could expose sensitive financial data. Encrypting payment data and limiting access to authorized personnel only is critical for security.
+Stakeholders affected: Customers, IT Security Team
