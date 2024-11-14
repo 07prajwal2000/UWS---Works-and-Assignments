@@ -84,8 +84,9 @@ def deposit_option():
     return
   amount = float(amount)
   balance = bank.deposit_money(account.account_number, amount)
+  is_savings = account.account_type == "savings"
   if balance != -1:
-    print(f"Your updated balance is {account.balance}")
+    print(f"Your updated balance is {account.balance} {f"With Interest of {account.interest_rate}x" if is_savings else ""}")
   else:
     print("Failed to deposit money")
 
