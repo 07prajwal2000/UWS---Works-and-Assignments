@@ -23,6 +23,9 @@ class Task:
 	def set_duedate(self, due_date: datetime):
 		self.due_date = due_date
 
+class PriorityTask(Task):
+	pass
+
 class RecurringTask(Task):
 	next_recurring_date: datetime
 
