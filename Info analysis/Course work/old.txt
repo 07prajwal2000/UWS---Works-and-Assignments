@@ -1,0 +1,25 @@
+Concerns
+
+1. Customer data should be accurate and must not be outdated or inaccurate and not to store longer than required.
+2. We need to make sure that all important business data can be recovered if a disaster occurs.
+3. Personalized ads, offers, and data tracking can make customers feel like they are being monitored.
+4. Protecting customer contact information is essential for maintaining trust and compliance with data protection regulations.
+5. The "chilling effect" occurs when customers modify their behavior because they are aware of digital surveillance, causing disengagement and self-censorship.
+6. Accessing data without permission and without a legitimate job-related need.
+7. Securing customer’s financial data.
+8. Unauthorized system access can lead to data breaches, which can lead to loss of confidentiality, integrity, and availability of sensitive information.
+9. Customers should be informed about the intended uses of their data.
+10. Unauthorized modification and misusing the data cannot be identified without proper monitoring.
+
+
+Actions
+1. Collection of data should be regularly updated, maintained such as phone, email, address etc. Also, not to store it when no longer necessary.
+2. Creating backup of all the required data and stored in multiple locations with redundancy is important for ensuring data recovery.
+3. Data tracking should occur only when necessary, such as for sending notifications or reminders. This method minimizes unnecessary collection of data improves user privacy.
+4. Storing and retrieving contact information only when necessary, such as during customer interactions is crucial for protecting sensitive data.
+5. Minimizing unnecessary data collection, increasing transparency about the data processing methods. This approach ensures compliance with data protection rules & regulations.
+6. Implementing RBAC (Role-Based-Access-Control) to the system allows more fine-grained access to business data enhancing security and reducing risk of data leak.
+7. Encrypting critical payment information, such as card details and PINs, is vital for data security. Algorithms like AES (Advanced Encryption Standard) and RSA (Rivest-Shamir-Adleman) provide efficient symmetric encryption.
+8. Implementing Multi-Factor Authentication (MFA) for staff members can significantly reduce the risk of data breaches.
+9. Organizations should provide transparent privacy policies that clearly outline how customer data is collected, used, processed, and protected. This transparency shows trust and ensures compliance with data protection regulations.
+10. Maintaining audit trails and logs provides clear view of who has accessed the data for what purpose. Regularly reviewing logs can help detect unwanted activities.
