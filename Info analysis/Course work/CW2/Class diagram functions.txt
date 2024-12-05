@@ -1,0 +1,48 @@
+Functions
+
+DVD Rental System
+--------------------
+create DVD Rental System()
+delete DVD Rental System()
+create Supplier Details()
+get Supplier Details()
+store DVD Catalogue()
+store DVD()
+store Customer()
+get Customer()
+notify Customer of new DVD()
+verify Customer Card()
+validate DVD Barcode()
+link Bank Card to Customer Card()
+change DVD Status()
+link Clerk to Rental Form()
+query Overdue DVD()
+reserve DVD()
+record Reservation()
+contact Customer()
+respond to Enquiries()
+
+Supplier
+------------
+supply New DVD()
+send Electronic DVD Catalogue()
+
+Customer
+-------------
+pickup DVD()
+reserve DVD()
+pay by Cash()
+pay by Card()
+return DVD()
+pay Deposit for Reservation()
+cancel the Reservation()
+
+Scanning Machine
+----------------
+scan Barcode()
+
+Store Clerk
+----------------
+issue Customer Card()
+scan Customer Card()
+process Payment()
