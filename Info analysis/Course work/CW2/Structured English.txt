@@ -1,0 +1,50 @@
+Customer picks up DVDs // Optional 🤔 or gets reserved DVDs from store
+Clerk gets the customer card to scan in the machine
+if(the system accepts the card) (special case) 
+the clerk clicks the RENTAL button 
+fills online form for the customer 
+
+repeat
+
+	system validates barcode stored in the system
+	
+	if (barcode does not match)
+		system reject the DVD
+	else
+	then
+		system will add new rental line in new form with details
+		rental price is added to total rental cost
+	end if
+
+until (All DVDs are scanned)
+
+customer pays total money by cash or card
+
+if (card used for 1st time)
+	clerk save the details of customer and card in system
+end if
+
+clerk process the payment manually
+
+if (payment is invalid) (special case)
+	clerk rejects the payment & clicks cancel button
+else
+	clerk clicks COMPLETE button to save in the system
+end if
+
+status changes of all DVDs from "in" to "out" in system
+clerk enters staff number
+clerk gets return DVDs from customer
+
+clerk clicks Return button
+Scans DVD barcode
+
+if (scanned barcode does not match with store barcode)
+then
+	system rejects DVD
+else
+	system changes the status from "out" to "in" for DVD
+	system searches for due date of DVD
+	notify to store to contact customer to Returns
+end if
+
