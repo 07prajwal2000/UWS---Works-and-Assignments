@@ -1,7 +1,7 @@
-week 4 - Business ctx diagram
-week 5 - horizontal swim lanes
-week 6 - use-case diagram
-week 7 - vertical swimlanes
-week 8 - class diagram
-week 9 - Service Interaction Diagram
-week 10 - Service Interface Diagrams
+✅  week 4 - Business ctx diagram
+🟨  week 5 - horizontal swim lanes - Sreeraj
+🟨  week 6 - use-case diagram      - Aman
+✅  week 7 - vertical swimlanes
+✅  week 8 - class diagram
+✅  week 9 - Service Interaction Diagram
+✅  week 10 - Service Interface Diagrams
