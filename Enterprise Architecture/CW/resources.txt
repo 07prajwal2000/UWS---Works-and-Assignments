@@ -1,5 +1,5 @@
 ✅  week 4 - Business ctx diagram
-🟨  week 5 - horizontal swim lanes - Sreeraj
+✅  week 5 - horizontal swim lanes - Sreeraj
 🟨  week 6 - use-case diagram      - Aman
 ✅  week 7 - vertical swimlanes
 ✅  week 8 - class diagram
