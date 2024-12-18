@@ -5,3 +5,7 @@
 ✅  week 8 - class diagram
 ✅  week 9 - Service Interaction Diagram
 ✅  week 10 - Service Interface Diagrams
+
+praj - 5, 9, 11-12
+srerraj - 6-7, 10
+aman - 8, 10
