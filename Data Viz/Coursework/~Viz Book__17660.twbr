@@ -1,0 +1,1185 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Top K Universities' datatype='real' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='10.'>
+        <calculation class='tableau' formula='10.' />
+        <range granularity='1.0' max='20.0' min='3.0' />
+      </column>
+      <column caption='Select Year' datatype='integer' default-format='n0;-0' name='[Parameter 2]' param-domain-type='range' role='measure' type='quantitative' value='2011'>
+        <calculation class='tableau' formula='2011' />
+        <range granularity='1' max='2016' min='2011' />
+      </column>
+      <column caption='Select Country' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;United States of America&quot;'>
+        <calculation class='tableau' formula='&quot;United States of America&quot;' />
+        <members>
+          <member value='&quot;Australia&quot;' />
+          <member value='&quot;Austria&quot;' />
+          <member value='&quot;Belgium&quot;' />
+          <member value='&quot;Brazil&quot;' />
+          <member value='&quot;Canada&quot;' />
+          <member value='&quot;China&quot;' />
+          <member value='&quot;Denmark&quot;' />
+          <member value='&quot;Egypt&quot;' />
+          <member value='&quot;Finland&quot;' />
+          <member value='&quot;France&quot;' />
+          <member value='&quot;Germany&quot;' />
+          <member value='&quot;Hong Kong&quot;' />
+          <member value='&quot;Israel&quot;' />
+          <member value='&quot;Italy&quot;' />
+          <member value='&quot;Japan&quot;' />
+          <member value='&quot;Luxembourg&quot;' />
+          <member value='&quot;Netherlands&quot;' />
+          <member value='&quot;New Zealand&quot;' />
+          <member value='&quot;Norway&quot;' />
+          <member value='&quot;Republic of Ireland&quot;' />
+          <member value='&quot;Russian Federation&quot;' />
+          <member value='&quot;Singapore&quot;' />
+          <member value='&quot;South Africa&quot;' />
+          <member value='&quot;South Korea&quot;' />
+          <member value='&quot;Spain&quot;' />
+          <member value='&quot;Sweden&quot;' />
+          <member value='&quot;Switzerland&quot;' />
+          <member value='&quot;Taiwan&quot;' />
+          <member value='&quot;Turkey&quot;' />
+          <member value='&quot;United Kingdom&quot;' />
+          <member value='&quot;United States of America&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='Sheet 1 (times ranking dataset)' inline='true' name='federated.0e5x73o19xugm11dfc0to1pth1xh' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='times ranking dataset' name='excel-direct.0wno71h1bcylfe182vjy5089yj3t'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='D:/UWS/Data Viz/Coursework/times ranking dataset.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.0wno71h1bcylfe182vjy5089yj3t' name='Sheet 1' table='[&apos;Sheet 1$&apos;]' type='table'>
+          <columns gridOrigin='A1:M1062:no:A1:M1062:0' header='yes' outcome='6'>
+            <column datatype='integer' name='Rank Midpoint' ordinal='0' />
+            <column datatype='string' name='University' ordinal='1' />
+            <column datatype='string' name='Country' ordinal='2' />
+            <column datatype='real' name='International Students' ordinal='3' />
+            <column datatype='integer' name='Number of students' ordinal='4' />
+            <column datatype='real' name='Student Staff Ratio' ordinal='5' />
+            <column datatype='real' name='Teaching' ordinal='6' />
+            <column datatype='real' name='International Outlook' ordinal='7' />
+            <column datatype='real' name='Research' ordinal='8' />
+            <column datatype='real' name='Citations' ordinal='9' />
+            <column datatype='real' name='Income' ordinal='10' />
+            <column datatype='real' name='Total Score' ordinal='11' />
+            <column datatype='integer' name='Year' ordinal='12' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:M1062:no:A1:M1062:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rank Midpoint</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Rank Midpoint]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Rank Midpoint</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>University</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[University]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>University</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>International Students</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[International Students]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>International Students</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Number of students</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Number of students]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Number of students</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Student Staff Ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Student Staff Ratio]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Student Staff Ratio</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Teaching</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Teaching]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Teaching</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>International Outlook</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[International Outlook]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>International Outlook</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Research</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Research]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Research</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Citations</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Citations]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Citations</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Income</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Income]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Income</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Score</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Total Score]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Total Score</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[Sheet 1]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='YearRange' datatype='boolean' name='[Calculation_339458887798661121]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[Year] == [Parameters].[Parameter 2]' />
+      </column>
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='integer' name='[Year]' role='dimension' type='quantitative' />
+      <column caption='Sheet 1' datatype='table' name='[__tableau_internal_object_id__].[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]' role='measure' type='quantitative' />
+      <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/manua/AppData/Local/Temp/TableauTemp/#TableauTemp_0eei06i138lfm2193cc600zaplij.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='04/07/2025 06:41:44 PM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Rank Midpoint</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Rank Midpoint]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Rank Midpoint</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Sheet 1</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>200</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>University</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[University]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>University</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Sheet 1</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>250</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Country</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Sheet 1</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>31</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>International Students</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[International Students]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>International Students</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>45</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Number of students</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Number of students]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Number of students</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Sheet 1</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>246</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Student Staff Ratio</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Student Staff Ratio]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Student Staff Ratio</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>157</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Teaching</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Teaching]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Teaching</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>498</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>International Outlook</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[International Outlook]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>International Outlook</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>573</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Research</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Research]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Research</remote-alias>
+              <ordinal>8</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>530</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Citations</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Citations]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Citations</remote-alias>
+              <ordinal>9</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>459</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Income</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Income]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Income</remote-alias>
+              <ordinal>10</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>474</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Total Score</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Total Score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Total Score</remote-alias>
+              <ordinal>11</ordinal>
+              <family>Sheet 1</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>385</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Year</remote-alias>
+              <ordinal>12</ordinal>
+              <family>Sheet 1</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Country:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Finland&quot;</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>&quot;Turkey&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Australia&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Russian Federation&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Canada&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Spain&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Israel&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;France&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;United Kingdom&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;China&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Sweden&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Norway&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Austria&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Singapore&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Netherlands&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Denmark&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Switzerland&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Italy&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Japan&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;New Zealand&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Republic of Ireland&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Germany&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;United States of America&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Egypt&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Taiwan&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Belgium&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;South Africa&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Luxembourg&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Hong Kong&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Brazil&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;South Korea&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United Kingdom&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Select Year' datatype='integer' default-format='n0;-0' name='[Parameter 2]' param-domain-type='range' role='measure' type='quantitative' value='2011'>
+          <calculation class='tableau' formula='2011' />
+          <range granularity='1' max='2016' min='2011' />
+        </column>
+      </datasource-dependencies>
+      <object-graph>
+        <objects>
+          <object caption='Sheet 1' id='Sheet 1_7326B6B4C1CB49EFAE6AE890F7C2F28E'>
+            <properties context=''>
+              <relation connection='excel-direct.0wno71h1bcylfe182vjy5089yj3t' name='Sheet 1' table='[&apos;Sheet 1$&apos;]' type='table'>
+                <columns gridOrigin='A1:M1062:no:A1:M1062:0' header='yes' outcome='6'>
+                  <column datatype='integer' name='Rank Midpoint' ordinal='0' />
+                  <column datatype='string' name='University' ordinal='1' />
+                  <column datatype='string' name='Country' ordinal='2' />
+                  <column datatype='real' name='International Students' ordinal='3' />
+                  <column datatype='integer' name='Number of students' ordinal='4' />
+                  <column datatype='real' name='Student Staff Ratio' ordinal='5' />
+                  <column datatype='real' name='Teaching' ordinal='6' />
+                  <column datatype='real' name='International Outlook' ordinal='7' />
+                  <column datatype='real' name='Research' ordinal='8' />
+                  <column datatype='real' name='Citations' ordinal='9' />
+                  <column datatype='real' name='Income' ordinal='10' />
+                  <column datatype='real' name='Total Score' ordinal='11' />
+                  <column datatype='integer' name='Year' ordinal='12' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Research vs Citations'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet 1 (times ranking dataset)' name='federated.0e5x73o19xugm11dfc0to1pth1xh' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Select Year' datatype='integer' default-format='n0;-0' name='[Parameter 2]' param-domain-type='range' role='measure' type='quantitative' value='2011'>
+              <calculation class='tableau' formula='2011' />
+              <range granularity='1' max='2016' min='2011' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0e5x73o19xugm11dfc0to1pth1xh'>
+            <column caption='YearRange' datatype='boolean' name='[Calculation_339458887798661121]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[Year] == [Parameters].[Parameter 2]' />
+            </column>
+            <column datatype='real' name='[Citations]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Research]' role='measure' type='quantitative' />
+            <column datatype='string' name='[University]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Citations]' derivation='Avg' name='[avg:Citations:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Research]' derivation='Avg' name='[avg:Research:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_339458887798661121]' derivation='None' name='[none:Calculation_339458887798661121:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[University]' derivation='None' name='[none:University:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Calculation_339458887798661121:nk]'>
+            <groupfilter function='member' level='[none:Calculation_339458887798661121:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Calculation_339458887798661121:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Research:qk]' field-type='quantitative' max='103.45024312365278' min='-2.6760033317130194' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Citations:qk]' field-type='quantitative' max='107.21645866655891' min='-0.20007649951040563' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]' />
+              <lod column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Citations:qk]</rows>
+        <cols>[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Research:qk]</cols>
+      </table>
+      <simple-id uuid='{93EB2728-F565-4DF8-A7ED-1D44FECBBF8A}' />
+    </worksheet>
+    <worksheet name='Student Staff Ratio'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet 1 (times ranking dataset)' name='federated.0e5x73o19xugm11dfc0to1pth1xh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0e5x73o19xugm11dfc0to1pth1xh'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Student Staff Ratio]' role='measure' type='quantitative' />
+            <column-instance column='[Student Staff Ratio]' derivation='Avg' name='[avg:Student Staff Ratio:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Student Staff Ratio:qk]' shelf='columns' />
+          </shelf-sorts>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Student Staff Ratio:qk]' scope='rows' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Student Staff Ratio:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Student Staff Ratio:qk]</rows>
+        <cols>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]</cols>
+      </table>
+      <simple-id uuid='{E66EB8C6-E404-4A07-AFF2-502DCE91EE5E}' />
+    </worksheet>
+    <worksheet name='Top Uni by Score'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Top Universities</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet 1 (times ranking dataset)' name='federated.0e5x73o19xugm11dfc0to1pth1xh' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Select Year' datatype='integer' default-format='n0;-0' name='[Parameter 2]' param-domain-type='range' role='measure' type='quantitative' value='2011'>
+              <calculation class='tableau' formula='2011' />
+              <range granularity='1' max='2016' min='2011' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0e5x73o19xugm11dfc0to1pth1xh'>
+            <column caption='YearRange' datatype='boolean' name='[Calculation_339458887798661121]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[Year] == [Parameters].[Parameter 2]' />
+            </column>
+            <column datatype='real' name='[Total Score]' role='measure' type='quantitative' />
+            <column datatype='string' name='[University]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Total Score]' derivation='Avg' name='[avg:Total Score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_339458887798661121]' derivation='None' name='[none:Calculation_339458887798661121:nk]' pivot='key' type='nominal' />
+            <column-instance column='[University]' derivation='None' name='[none:University:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Calculation_339458887798661121:nk]'>
+            <groupfilter function='member' level='[none:Calculation_339458887798661121:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([Total Score])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:University:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;California Institute of Technology&quot;</bucket>
+              <bucket>&quot;Stanford University&quot;</bucket>
+              <bucket>&quot;Harvard University&quot;</bucket>
+              <bucket>&quot;University of Oxford&quot;</bucket>
+              <bucket>&quot;Massachusetts Institute of Technology&quot;</bucket>
+              <bucket>&quot;University of Cambridge&quot;</bucket>
+              <bucket>&quot;Imperial College London&quot;</bucket>
+              <bucket>&quot;Johns Hopkins University&quot;</bucket>
+              <bucket>&quot;University of Pennsylvania&quot;</bucket>
+              <bucket>&quot;University of Michigan&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]</column>
+            <column>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Calculation_339458887798661121:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]' value='false' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Total Score:qk]</rows>
+        <cols>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:University:nk]</cols>
+      </table>
+      <simple-id uuid='{3EAC3A5C-5557-4AFB-A01D-8D95544F35B8}' />
+    </worksheet>
+    <worksheet name='Trend over years by Country'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet 1 (times ranking dataset)' name='federated.0e5x73o19xugm11dfc0to1pth1xh' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Select Country' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;United States of America&quot;'>
+              <calculation class='tableau' formula='&quot;United States of America&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0e5x73o19xugm11dfc0to1pth1xh'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Total Score]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Total Score]' derivation='Avg' name='[avg:Total Score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='None' name='[none:Year:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]'>
+            <groupfilter expression='[Parameters].[Parameter 3] == [Country]' function='filter' user:ui-marker='filter-by'>
+              <groupfilter function='level-members' level='[none:Country:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='display' class='0' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Year:qk]' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Year:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Total Score:qk]</rows>
+        <cols>[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Year:qk]</cols>
+      </table>
+      <simple-id uuid='{445F60BE-F826-406A-BEB5-50B1BEC77029}' />
+    </worksheet>
+    <worksheet name='Uni Size vs Score'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>University Size vs Score</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet 1 (times ranking dataset)' name='federated.0e5x73o19xugm11dfc0to1pth1xh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0e5x73o19xugm11dfc0to1pth1xh'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='integer' name='[Number of students]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Total Score]' role='measure' type='quantitative' />
+            <column-instance column='[Total Score]' derivation='Avg' name='[avg:Total Score:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Number of students]' derivation='Sum' name='[sum:Number of students:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]' />
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]' />
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[avg:Total Score:qk]' />
+              <size column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[sum:Number of students:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{551B9851-EA39-4DEF-9005-144E4C635EC2}' />
+    </worksheet>
+    <worksheet name='Uni by Country'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>University by Country</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Sheet 1 (times ranking dataset)' name='federated.0e5x73o19xugm11dfc0to1pth1xh' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0e5x73o19xugm11dfc0to1pth1xh'>
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[Country]' derivation='Count' name='[cnt:Country:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[Longitude (generated)]' field-type='quantitative' max='54610430.325173162' min='21635116.627777725' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[Latitude (generated)]' field-type='quantitative' max='13951589.307602894' min='-3728106.7374902442' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0e5x73o19xugm11dfc0to1pth1xh].[cnt:Country:qk]' palette='green_blue_white_diverging_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]' />
+              <text column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[cnt:Country:qk]' />
+              <lod column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[none:Country:nk]' />
+              <color column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[cnt:Country:qk]' />
+              <geometry column='[federated.0e5x73o19xugm11dfc0to1pth1xh].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0e5x73o19xugm11dfc0to1pth1xh].[Latitude (generated)]</rows>
+        <cols>[federated.0e5x73o19xugm11dfc0to1pth1xh].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{618915CB-1D6A-484F-94A7-107FCD71C042}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='37'>
+    <window class='worksheet' name='Top Uni by Score'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='slider' param='[Parameters].[Parameter 2]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{21671058-F4C8-49EB-9DE2-20CCFB882C0E}' />
+    </window>
+    <window class='worksheet' name='Uni by Country'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0e5x73o19xugm11dfc0to1pth1xh].[cnt:Country:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CEE13AE1-C53F-4A90-8E1A-BE491A6BD661}' />
+    </window>
+    <window class='worksheet' name='Research vs Citations'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card size='26' type='pages' />
+            <card size='44' type='filters' />
+            <card size='206' type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{FA449F27-C606-4408-BAAB-A7E1AB5A84D6}' />
+    </window>
+    <window class='worksheet' name='Trend over years by Country'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='compact' param='[Parameters].[Parameter 3]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3CBBDD8B-AD07-448F-B270-28989E5166B9}' />
+    </window>
+    <window class='worksheet' name='Uni Size vs Score'>
+      <cards>
+        <edge name='left'>
+          <strip size='177'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{145EEECA-5A24-42E3-AD1D-EA5E2E6F5C65}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Student Staff Ratio'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CC07E63C-EF62-4DB4-A39F-C5941430C38E}' />
+    </window>
+  </windows>
+</workbook>
