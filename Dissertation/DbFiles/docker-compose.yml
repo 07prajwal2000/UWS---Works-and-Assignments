@@ -1,0 +1,14 @@
+services:
+  myrocks:
+    image: percona/percona-server:5.7
+    container_name: myrocks
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    command: --plugin-load-add=ha_rocksdb.so
+    volumes:
+      - ./rocksdb_data:/var/lib/mysql
+    cpus: 1
+    mem_limit: 1G
+    restart: always
