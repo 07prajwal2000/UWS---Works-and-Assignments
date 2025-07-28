@@ -1,4 +1,5 @@
 .venv
 csv/
+rocksdb_data/
 postgres_data/
 cockroachdb_data/
