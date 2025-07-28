@@ -1,0 +1,4 @@
+.venv
+csv/
+postgres_data/
+cockroachdb_data/
