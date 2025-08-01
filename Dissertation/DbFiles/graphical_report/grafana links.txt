@@ -1,0 +1,50 @@
+pg - no index
+http://localhost:3000/d/tLHmjJ4H888/docker-cadvisor-compute-resources?orgId=1&from=2025-07-31T08:14:20.017Z&to=2025-07-31T08:34:20.017Z&timezone=browser&refresh=5s&kiosk=
+
+pg - with index
+http://localhost:3000/d/tLHmjJ4H888/docker-cadvisor-compute-resources?orgId=1&from=2025-07-31T08:58:02.227Z&to=2025-07-31T09:18:02.227Z&timezone=browser&refresh=5s&kiosk=
+
+INSERT DURATIONS
+-------------------------------------------------------
+users table insert
+Overall: 0:00:46.182223
+Actual:  42629.77700000012 ms
+
+orders table insert
+Overall: 0:02:55.736008
+Actual:  146714.2190000006 ms
+
+entry
+Overall: 0:06:19.314971
+Actual:  370262.92800000345 ms
+
+tnx
+
+Overall: 0:04:31.621624
+Actual:  265510.77500000084 m
+
+
+cockroachdb
+before index
+http://localhost:3000/d/tLHmjJ4H888/docker-cadvisor-compute-resources?orgId=1&from=2025-07-31T15:46:16.655Z&to=2025-07-31T16:11:16.655Z&timezone=browser&refresh=5s&kiosk=
+
+after index
+http://localhost:3000/d/tLHmjJ4H888/docker-cadvisor-compute-resources?orgId=1&from=2025-07-31T19:09:01.371Z&to=2025-07-31T19:29:01.371Z&timezone=browser&refresh=5s&kiosk=
+
+users insert
+Overall: 0:09:26.044874
+Actual:  537234.055000003 ms
+
+orders
+Overall: 0:07:08.298251
+Actual:  396561.322000001 ms
+
+order entry:
+7min 53 sec
+
+transactions
+4m 13s 7ms
+
+
+myrocks
+http://localhost:3000/d/tLHmjJ4H888/docker-cadvisor-compute-resources?orgId=1&from=2025-08-01T07:21:14.326Z&to=2025-08-01T07:41:14.326Z&timezone=browser&refresh=5s

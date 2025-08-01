@@ -9,8 +9,8 @@ reviews = []
 idx = 0
 for i, order in orders.iterrows():
     review = {
-        "order_id": order["order_id"],
         "review_id": v4(),
+        "order_id": order["order_id"],
         "user_id": order["user_id"],
         "rating": random.randint(1, 5),
         "review_text": dummy_reviews["review_text"].iloc[idx],

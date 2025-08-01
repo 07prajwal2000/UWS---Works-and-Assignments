@@ -1,4 +1,39 @@
 services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana_bench
+    networks:
+      - net
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    networks:
+      - net
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus_data:/prometheus
+    depends_on:
+      - cadvisor
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    networks:
+      - net
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
   myrocks:
     image: percona/percona-server:5.7
     container_name: myrocks_btree_and_lsmtree
@@ -11,6 +46,9 @@ services:
       - ./rocksdb_data:/var/lib/mysql
     cpus: 1
     mem_limit: 1G
+    shm_size: 1G
+    networks:
+      - net
     restart: always
   postgres:
     image: postgres:bullseye
@@ -23,16 +61,25 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
     cpus: 1
     mem_limit: 1G
+    shm_size: 1G
     restart: always
+    networks:
+      - net
   cockroachdb:
-    image: cockroachdb/cockroach:latest-v23.2
+    image: cockroachdb/cockroach:v25.2.2
     container_name: cockroachdb
     ports:
       - 26257:26257
-      - 26258:26258
     command: start-single-node --insecure
     volumes:
       - ./cockroachdb_data:/cockroach/cockroach-data
     cpus: 1
     mem_limit: 1G
+    shm_size: 1G
     restart: always
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge

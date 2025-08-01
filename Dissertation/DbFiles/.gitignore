@@ -3,3 +3,6 @@ csv/
 rocksdb_data/
 postgres_data/
 cockroachdb_data/
+prometheus_data/
+grafana_data/
+exported_data/

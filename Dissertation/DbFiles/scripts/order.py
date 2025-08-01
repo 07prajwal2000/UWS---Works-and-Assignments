@@ -9,7 +9,7 @@ usersDf["id"] = usersDf.index + 1
 products["id"] = products.index + 1
 
 i = 0
-for chunk in range(8):  # 8 * 25k = 100k
+for chunk in range(8):  # 8 * 25k = 200k
     usersDf = usersDf.sample(25_000)
     orders = []
     allOrderEntries = []
@@ -53,8 +53,8 @@ for chunk in range(8):  # 8 * 25k = 100k
             print(i, "users done")
 
     ordersDf = pd.DataFrame(orders)
-    ordersDf.to_csv("csv/orders.csv", index=False, mode="a")
+    ordersDf.to_csv("csv/orders.csv", index=False, mode="a", header=True)
 
     ordersEntryDf = pd.DataFrame(allOrderEntries)
-    ordersEntryDf.to_csv("csv/orders_entry.csv", index=False, mode="a")
+    ordersEntryDf.to_csv("csv/orders_entry.csv", index=False, mode="a", header=True)
     print("chunk", chunk, "done")
