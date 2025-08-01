@@ -49,3 +49,7 @@ transactions
 myrocks
 http://localhost:3000/d/tLHmjJ4H888/docker-cadvisor-compute-resources?orgId=1&from=2025-08-01T07:21:14.326Z&to=2025-08-01T07:41:14.326Z&timezone=browser&refresh=5s
 
+users: 9s 05ms
+orders: 4s 20ms
+order entry: 9s
+transactions: 7s 20ms
