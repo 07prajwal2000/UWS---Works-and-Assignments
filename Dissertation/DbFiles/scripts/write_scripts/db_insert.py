@@ -2,10 +2,6 @@ import pandas as pd
 import psycopg2 as pg
 import datetime
 
-# orders
-# users
-# orders_entry_new
-
 df = pd.read_csv("csv/orders_entry_new.csv")
 table = "orders_entry"
 connection = pg.connect(

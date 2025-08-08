@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0" version="26.2.9">
+  <diagram name="Page-1" id="l8mYfznrZCPLJ0lubX3o">
+    <mxGraphModel dx="835" dy="437" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CT9elgmPoWFy9NnniP89-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="130" y="10" width="560" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CT9elgmPoWFy9NnniP89-1" target="CT9elgmPoWFy9NnniP89-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-18" value="Fetches metric information per container" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CT9elgmPoWFy9NnniP89-17">
+          <mxGeometry x="0.2176" y="-2" relative="1" as="geometry">
+            <mxPoint y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-1" value="Grafana" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="350" y="35" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CT9elgmPoWFy9NnniP89-2" target="CT9elgmPoWFy9NnniP89-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-16" value="Scrapes metrics" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CT9elgmPoWFy9NnniP89-15">
+          <mxGeometry x="0.3616" y="-1" relative="1" as="geometry">
+            <mxPoint x="18" y="41" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-2" value="Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="350" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="CT9elgmPoWFy9NnniP89-3" target="CT9elgmPoWFy9NnniP89-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-14" value="Fetch metrics" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="CT9elgmPoWFy9NnniP89-13">
+          <mxGeometry x="-0.1402" relative="1" as="geometry">
+            <mxPoint x="26" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-3" value="cAdvisor" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="160" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-4" value="postgres" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="160" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-5" value="myrocks" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="350" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-6" value="cockroachdb" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="540" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-9" value="net" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="140" y="20" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-12" value="Docker Host" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="350" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-20" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="CT9elgmPoWFy9NnniP89-4" target="CT9elgmPoWFy9NnniP89-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="280" as="sourcePoint" />
+            <mxPoint x="370" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-21" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="CT9elgmPoWFy9NnniP89-5" target="CT9elgmPoWFy9NnniP89-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="278" y="350" as="sourcePoint" />
+            <mxPoint x="373" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-22" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="CT9elgmPoWFy9NnniP89-6" target="CT9elgmPoWFy9NnniP89-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="350" as="sourcePoint" />
+            <mxPoint x="420" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CT9elgmPoWFy9NnniP89-23" value="Manages Lifetime" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="346" y="285" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
