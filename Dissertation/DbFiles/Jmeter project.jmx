@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="postgres thread grp">
+        <intProp name="ThreadGroup.num_threads">50</intProp>
+        <intProp name="ThreadGroup.ramp_time">10</intProp>
+        <longProp name="ThreadGroup.duration">900</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="product_ids_dataset" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:/Softwares/Jmeter/JMeter project/product_ids.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">product_id</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="users_email_dataset" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:/Softwares/Jmeter/JMeter project/100_users_email.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">user_id,email</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Postgres">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">jdbcConfig</stringProp>
+          <stringProp name="dbUrl">jdbc:postgresql://localhost:5432/lsm_vs_btree_test</stringProp>
+          <stringProp name="driver">org.postgresql.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">postgres</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">postgres</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Read Requests"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get transactions count grouped by status" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">select t.status, count(t.transaction_id) from transactions t
+left join users u on u.id = t.user_id
+group by t.status;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="get order entry by user id" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT p.product_name, oe.quantity, oe.discounted_price from order_entry oe
+left join products p on oe.product_id = p.product_id
+left join orders o on o.order_id = oe.order_id
+where o.user_id = ${user_id}
+order by oe.discounted_price desc;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get orders who has ordered 250 pounds" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT o.order_id, o.discounted_price, u.first_name, u.last_name 
+FROM orders o
+JOIN users u ON o.user_id = u.id
+WHERE o.discounted_price &gt; 250
+limit 1000;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get top reviews" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT p.product_name, r.review_text, r.rating from reviews r
+left join order_entry oe on oe.order_id = r.order_id
+left join products p on p.product_id = oe.product_id
+order by r.rating desc
+LIMIT 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get total products by category" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT c.category, COUNT(p.category) as total_products FROM products p
+left join category c on c.id = p.category
+GROUP BY c.category
+ORDER BY total_products desc
+LIMIT 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get users who joined last 30 days" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM users WHERE date_joined &gt;= NOW() - INTERVAL &apos;30 DAY&apos;
+order by date_joined desc
+limit 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get products in price range" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM products WHERE price BETWEEN 10 AND 40;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get top selling products" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">select p.product_name, count(p.product_id) as total_sales, sum(oe.quantity) as total_qty, sum(discounted_price) as total_revenue from order_entry oe
+left join products p on p.product_id = oe.product_id
+group by p.product_id
+ORDER BY count(p.product_id) DESC
+limit 10;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get products by sorted category id" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">SELECT p.product_name, p.product_description, c.category from products p
+left join category c
+on c.id = p.category
+order by p.category asc
+limit 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get Product by ID" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM products WHERE product_id = ${product_id} limit 1;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get User by email" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM users WHERE email = &apos;${email}&apos; limit 1;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">email</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+            </value>
+          </objProp>
+          <stringProp name="filename">D:\Softwares\Jmeter\JMeter project\results.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="cockroachdb thread grp" enabled="false">
+        <intProp name="ThreadGroup.num_threads">50</intProp>
+        <intProp name="ThreadGroup.ramp_time">10</intProp>
+        <longProp name="ThreadGroup.duration">900</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="product_ids_dataset" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:/Softwares/Jmeter/JMeter project/product_ids.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">product_id</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="users_email_dataset" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:/Softwares/Jmeter/JMeter project/100_users_email.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">user_id,email</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC cockroachdb" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">jdbcConfig</stringProp>
+          <stringProp name="dbUrl">jdbc:postgresql://35.177.126.140:26257/testdb</stringProp>
+          <stringProp name="driver">org.postgresql.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password"></stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">root</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Read Requests" enabled="true"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get transactions count grouped by status" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">select t.status, count(t.transaction_id) from transactions t
+left join users u on u.id = t.user_id
+group by t.status;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="get order entry by user id" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT p.product_name, oe.quantity, oe.discounted_price from order_entry oe
+left join products p on oe.product_id = p.product_id
+left join orders o on o.order_id = oe.order_id
+where o.user_id = ${user_id}
+order by oe.discounted_price desc;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get orders who has ordered 250 pounds" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT o.order_id, o.discounted_price, u.first_name, u.last_name 
+FROM orders o
+JOIN users u ON o.user_id = u.id
+WHERE o.discounted_price &gt; 250
+limit 1000;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get top reviews" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT p.product_name, r.review_text, r.rating from reviews r
+left join order_entry oe on oe.order_id = r.order_id
+left join products p on p.product_id = oe.product_id
+order by r.rating desc
+LIMIT 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get total products by category" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT c.category, COUNT(p.category) as total_products FROM products p
+left join category c on c.id = p.category
+GROUP BY c.category
+ORDER BY total_products desc
+LIMIT 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get users who joined last 30 days" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM users WHERE date_joined &gt;= NOW() - INTERVAL &apos;30 DAY&apos;
+order by date_joined desc
+limit 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get products in price range" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM products WHERE price BETWEEN 10 AND 40;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get top selling products" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">select p.product_name, count(p.product_id) as total_sales, sum(oe.quantity) as total_qty, sum(discounted_price) as total_revenue from order_entry oe
+left join products p on p.product_id = oe.product_id
+group by p.product_id
+ORDER BY count(p.product_id) DESC
+limit 10;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get products by sorted category id" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">SELECT p.product_name, p.product_description, c.category from products p
+left join category c
+on c.id = p.category
+order by p.category asc
+limit 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get Product by ID" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM products WHERE product_id = ${product_id} limit 1;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get User by email" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM users WHERE email = &apos;${email}&apos; limit 1;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">email</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+            </value>
+          </objProp>
+          <stringProp name="filename">D:\Softwares\Jmeter\JMeter project\results_cockroach.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="rocksdb thread grp" enabled="false">
+        <intProp name="ThreadGroup.num_threads">50</intProp>
+        <intProp name="ThreadGroup.ramp_time">10</intProp>
+        <longProp name="ThreadGroup.duration">900</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="product_ids_dataset" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:/Softwares/Jmeter/JMeter project/product_ids.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">product_id</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="users_email_dataset" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">D:/Softwares/Jmeter/JMeter project/100_users_email.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">user_id,email</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC rocksdb" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery">select 1</stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">jdbcConfig</stringProp>
+          <stringProp name="dbUrl">jdbc:mysql://35.179.172.185:3306/testdb</stringProp>
+          <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">root</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">root</stringProp>
+          <boolProp name="preinit">false</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Read Requests" enabled="true"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get transactions count grouped by status" enabled="false">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">select t.status, count(t.transaction_id) from transactions t
+left join users u on u.id = t.user_id
+group by t.status;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="get order entry by user id" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT p.product_name, oe.quantity, oe.discounted_price from order_entry oe
+left join products p on oe.product_id = p.product_id
+left join orders o on o.order_id = oe.order_id
+where o.user_id = ${user_id}
+order by oe.discounted_price desc;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get orders who has ordered 250 pounds" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT o.order_id, o.discounted_price, u.first_name, u.last_name 
+FROM orders o
+JOIN users u ON o.user_id = u.id
+WHERE o.discounted_price &gt; 250
+limit 1000;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get top reviews" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT p.product_name, r.review_text, r.rating from reviews r
+left join order_entry oe on oe.order_id = r.order_id
+left join products p on p.product_id = oe.product_id
+order by r.rating desc
+LIMIT 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get total products by category" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT c.category, COUNT(p.category) as total_products FROM products p
+left join category c on c.id = p.category
+GROUP BY c.category
+ORDER BY total_products desc
+LIMIT 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get users who joined last 30 days" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM users WHERE DATE_SUB(NOW(), INTERVAL 30 DAY)
+order by date_joined desc
+limit 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get products in price range" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM products WHERE price BETWEEN 10 AND 40;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get top selling products" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">select p.product_name, count(p.product_id) as total_sales, sum(oe.quantity) as total_qty, sum(discounted_price) as total_revenue from order_entry oe
+left join products p on p.product_id = oe.product_id
+group by p.product_id
+ORDER BY count(p.product_id) DESC
+limit 10;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">col1</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get products by sorted category id" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">SELECT p.product_name, p.product_description, c.category from products p
+left join category c
+on c.id = p.category
+order by p.category asc
+limit 100;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get Product by ID" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM products WHERE product_id = ${product_id} limit 1;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get User by email" enabled="true">
+            <stringProp name="dataSource">jdbcConfig</stringProp>
+            <stringProp name="query">SELECT * FROM users WHERE email = &apos;${email}&apos; limit 1;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">email</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+            </value>
+          </objProp>
+          <stringProp name="filename">D:\Softwares\Jmeter\JMeter project\results_myrocks.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
